@@ -1,6 +1,6 @@
 import classNames from "classnames";
 import EventEmitter from "eventemitter3";
-
+import Notification from "./Notification";
 export default class Card extends EventEmitter {
   static get events() {
     return {
@@ -21,11 +21,27 @@ export default class Card extends EventEmitter {
 
     this._type = type;
     this._price = price;
-
+    
     this.container = document.createElement("div");
     this.container.classList.add("card-container");
-  }
+    this.container.addEventListener("click",(event)=>{
+      const note =new Notification(type,price);
+      note.render();
+     
+      document.querySelector(".notifications").appendChild(note.container);
+      
+      const dels = document.querySelectorAll(".delete");
 
+      dels.forEach(x=>x.addEventListener("click",(event)=>{
+        event.target.parentElement.style.display = "none";
+
+      }))
+     
+      
+    });
+    
+  }
+  
   render() {
     const template = `
 <div class="card type-${this._type} ${classNames({
