@@ -20,7 +20,7 @@ export default class Notification {
   empty(){
     this.container.innerHTML="";
   }
- render(type,price) {
+ render({type,price}) {
     const template = `
 <div  class="notification type-${this.type} ${classNames({
   "is-danger": this.type === Card.types.HAWAIIAN,

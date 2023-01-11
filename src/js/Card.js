@@ -26,7 +26,7 @@ export default class Card extends EventEmitter {
     this.container.classList.add("card-container");
     this.container.addEventListener("click",(event)=>{
       const note =new Notification(type,price);
-      note.render(this._type,this._price);
+      note.render({type,price});
      
       document.querySelector(".notifications").appendChild(note.container);
       
