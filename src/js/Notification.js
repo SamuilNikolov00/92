@@ -20,13 +20,13 @@ export default class Notification {
   empty(){
     this.container.innerHTML="";
   }
- render() {
+ render(type,price) {
     const template = `
 <div  class="notification type-${this.type} ${classNames({
   "is-danger": this.type === Card.types.HAWAIIAN,
 })}">
   <button  class="delete"></button>
-  🍕 <span class="type">${this.type}</span> (<span class="price">${formatCurrency(this.price)}</span>) has been added to your order.
+  🍕 <span class="type">${type}</span> (<span class="price">${formatCurrency(price)}</span>) has been added to your order.
 </div>
     `;
 
