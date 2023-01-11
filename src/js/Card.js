@@ -33,7 +33,7 @@ export default class Card extends EventEmitter {
       const dels = document.querySelectorAll(".delete");
 
       dels.forEach(x=>x.addEventListener("click",(event)=>{
-        event.target.parentElement.style.display = "none";
+     event.target.parentElement.parentElement.parentElement.removeChild(event.target.parentElement.parentElement);
 
       }))
      
